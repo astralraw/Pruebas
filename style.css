@@ -320,12 +320,12 @@ body {
   margin-bottom: 25px;
 }
 
-/* --- ESTILO SPARKLE BUTTON --- */
-.sparkle-btn {
+/* --- ESTILO DEL BOTÓN CON DESTELLOS INTEGRADOS --- */
+.btn-enter {
   position: relative;
   padding: 14px 40px;
   background: #0a0a0a;
-  border: 2px solid #38bdf8;          /* Borde cyan resplandeciente */
+  border: 2px solid #38bdf8;
   border-radius: 10px;
   color: #ffffff;
   font-family: 'Syne', sans-serif;
@@ -335,91 +335,78 @@ body {
   cursor: pointer;
   outline: none;
   transition: all 0.4s ease;
-  box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.3),
+              inset 0 0 10px rgba(56, 189, 248, 0.15);
+  filter: drop-shadow(0 0 6px rgba(255, 253, 239, 0.4));
 }
 
-.sparkle-btn .btn-text {
+.btn-enter span {
   position: relative;
   z-index: 2;
 }
 
-/* Destellos / Estrellas svg */
+/* Contenedor de estrellas visible siempre */
 .sparkles {
   position: absolute;
   inset: 0;
   pointer-events: none;
 }
 
+/* Las estrellas ahora son parte fija del diseño */
 .sparkle {
   position: absolute;
   color: #fffdef;
-  opacity: 0;
-  transform: scale(0);
-  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  opacity: 0.85;                  /* Visibles permanentemente */
+  transform: scale(1);            /* Tamaño real por defecto */
+  animation: sparklePulse 2.5s infinite ease-in-out;
 }
 
-/* Posiciones de cada estrella alrededor del botón */
+/* Posiciones fijas de las estrellas alrededor del botón */
 .sparkle-1 {
-  width: 20px;
-  height: 20px;
-  top: -12px;
-  left: -10px;
+  width: 18px;
+  height: 18px;
+  top: -10px;
+  left: -8px;
+  animation-delay: 0s;
 }
 
 .sparkle-2 {
-  width: 14px;
-  height: 14px;
-  bottom: -8px;
-  right: 15%;
+  width: 13px;
+  height: 13px;
+  bottom: -7px;
+  right: 18%;
+  animation-delay: 0.8s;
 }
 
 .sparkle-3 {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   top: 50%;
-  right: -14px;
-  transform: translateY(-50%) scale(0);
+  right: -12px;
+  transform: translateY(-50%) scale(1);
+  animation-delay: 1.5s;
 }
 
-/* --- EFECTO HOVER Y ACTIVACIÓN (Sparkle & Glow) --- */
-.sparkle-btn:hover {
+/* Animación constante de parpadeo y rotación sutil */
+@keyframes sparklePulse {
+  0%, 100% { 
+    transform: scale(0.8) rotate(0deg); 
+    opacity: 0.5; 
+  }
+  50% { 
+    transform: scale(1.2) rotate(20deg); 
+    opacity: 1; 
+  }
+}
+
+/* Efecto al presionar o pasar el mouse */
+.btn-enter:hover,
+.btn-enter:active {
   background: #0f172a;
   border-color: #60a5fa;
-  box-shadow: 0 0 25px rgba(56, 189, 248, 0.6),
-              inset 0 0 10px rgba(56, 189, 248, 0.3);
-  transform: translateY(-2px);
-}
-
-/* Revelar las estrellas con brillo drop-shadow */
-.sparkle-btn:hover .sparkles {
-  filter: drop-shadow(0 0 8px #fffdef) drop-shadow(0 0 15px #38bdf8);
-}
-
-.sparkle-btn:hover .sparkle-1 {
-  opacity: 1;
-  transform: scale(1) rotate(15deg);
-}
-
-.sparkle-btn:hover .sparkle-2 {
-  opacity: 1;
-  transform: scale(1) rotate(-20deg);
-  transition-delay: 0.1s;
-}
-
-.sparkle-btn:hover .sparkle-3 {
-  opacity: 1;
-  transform: translateY(-50%) scale(1) rotate(45deg);
-  transition-delay: 0.2s;
-}
-
-/* Animación sutil pulsante de las estrellas */
-@keyframes sparklePulse {
-  0%, 100% { transform: scale(1) rotate(0deg); }
-  50% { transform: scale(1.2) rotate(15deg); }
-}
-
-.sparkle-btn:hover .sparkle {
-  animation: sparklePulse 2s infinite ease-in-out;
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.7),
+              inset 0 0 15px rgba(56, 189, 248, 0.4);
+  transform: scale(1.02);
 }
 
 .welcome-content:hover .btn-enter {
