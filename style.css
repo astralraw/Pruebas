@@ -88,8 +88,8 @@ body {
 
 .photo-columns {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 Columnas reales */
-  gap: 25px;                            /* Separación entre columnas */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
   width: 90%;
   max-width: 1600px;
   height: 100%;
@@ -102,14 +102,13 @@ body {
   gap: 25px;
 }
 
-/* Desplazamiento alternado de columnas para estilo editorial */
 .col-offset {
   transform: translateY(40px);
 }
 
 .grid-item {
   width: 100%;
-  aspect-ratio: 4 / 5;                 /* Ratio vertical de fotografía 4:5 */
+  aspect-ratio: 4 / 5;
   overflow: hidden;
   border-radius: 4px;
   background-color: #111;
@@ -128,7 +127,7 @@ body {
   transform: scale(1.04);
 }
 
-/* --- CAPA FRONTAL: TÍTULO GIGANTE SIN CUADROS DETRÁS --- */
+/* --- CAPA FRONTAL: TÍTULO GIGANTE --- */
 .layer-fg {
   display: flex;
   justify-content: center;
@@ -150,7 +149,7 @@ body {
 
 .hero-title h1 {
   font-family: 'Syne', sans-serif;
-  font-size: clamp(3.5rem, 8vw, 7.5rem); /* Título gigante que cruza de lado a lado */
+  font-size: clamp(3.5rem, 8vw, 7.5rem);
   font-weight: 800;
   letter-spacing: -2px;
   line-height: 0.95;
@@ -192,7 +191,7 @@ body {
   z-index: 50;
 }
 
-/* --- DISEÑO RESPONSIVE PARA TELÉFONOS (Móviles) --- */
+/* --- DISEÑO RESPONSIVE PARA TELÉFONOS --- */
 @media screen and (max-width: 768px) {
   .photo-columns {
     grid-template-columns: repeat(2, 1fr);
@@ -215,7 +214,6 @@ body {
     letter-spacing: 4px;
   }
 
-  /* Se mantiene absolute abajo sin centrarse por el flexbox */
   .hero-description {
     position: absolute;
     bottom: 20px;
@@ -239,17 +237,12 @@ body {
   }
 }
 
-/* --- ANIMACIÓN DE ENTRADA SUAVE (FADE-IN) --- */
+/* --- ANIMACIONES --- */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-/* Aplicamos la animación al contenedor de la rejilla de fotos y a la barra de navegación */
 .layer-bg {
   animation: fadeIn 1.2s ease-out forwards;
 }
@@ -258,7 +251,6 @@ body {
   animation: fadeIn 0.8s ease-out forwards;
 }
 
-/* Opcional: Hacemos que el título central aparezca un instante después con un leve movimiento hacia arriba */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -272,7 +264,7 @@ body {
 
 .layer-fg {
   animation: fadeInUp 1s ease-out 0.3s forwards;
-  opacity: 0; /* Empieza oculto para hacer la transición */
+  opacity: 0;
 }
 
 /* --- CAPA DE BIENVENIDA (SPLASH SCREEN) --- */
@@ -320,128 +312,7 @@ body {
   margin-bottom: 25px;
 }
 
-/* --- ESTILO DEL BOTÓN CON DESTELLOS INTEGRADOS --- */
-.btn-enter {
-  position: relative;
-  padding: 14px 40px;
-  background: #0a0a0a;
-  border: 2px solid #38bdf8;
-  border-radius: 10px;
-  color: #ffffff;
-  font-family: 'Syne', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 3px;
-  cursor: pointer;
-  outline: none;
-  transition: all 0.4s ease;
-  box-shadow: 0 0 20px rgba(56, 189, 248, 0.3),
-              inset 0 0 10px rgba(56, 189, 248, 0.15);
-  filter: drop-shadow(0 0 6px rgba(255, 253, 239, 0.4));
-}
-
-.btn-enter span {
-  position: relative;
-  z-index: 2;
-}
-
-/* Contenedor de estrellas visible siempre */
-.sparkles {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-/* Las estrellas ahora son parte fija del diseño */
-.sparkle {
-  position: absolute;
-  color: #fffdef;
-  opacity: 0.85;                  /* Visibles permanentemente */
-  transform: scale(1);            /* Tamaño real por defecto */
-  animation: sparklePulse 2.5s infinite ease-in-out;
-}
-
-/* Posiciones fijas de las estrellas alrededor del botón */
-.sparkle-1 {
-  width: 18px;
-  height: 18px;
-  top: -10px;
-  left: -8px;
-  animation-delay: 0s;
-}
-
-.sparkle-2 {
-  width: 13px;
-  height: 13px;
-  bottom: -7px;
-  right: 18%;
-  animation-delay: 0.8s;
-}
-
-.sparkle-3 {
-  width: 20px;
-  height: 20px;
-  top: 50%;
-  right: -12px;
-  transform: translateY(-50%) scale(1);
-  animation-delay: 1.5s;
-}
-
-/* Animación constante de parpadeo y rotación sutil */
-@keyframes sparklePulse {
-  0%, 100% { 
-    transform: scale(0.8) rotate(0deg); 
-    opacity: 0.5; 
-  }
-  50% { 
-    transform: scale(1.2) rotate(20deg); 
-
-/* --- CAPA DE BIENVENIDA (SPLASH SCREEN) --- */
-#welcome-overlay {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.92);
-  z-index: 99999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  cursor: pointer;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
-  opacity: 1;
-  visibility: visible;
-}
-
-#welcome-overlay.hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-.welcome-content {
-  padding: 20px;
-}
-
-.welcome-content .subtitle {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.75rem;
-  letter-spacing: 5px;
-  color: #888;
-  margin-bottom: 12px;
-}
-
-.welcome-content h2 {
-  font-family: 'Syne', sans-serif;
-  font-size: 1.8rem;
-  font-weight: 800;
-  letter-spacing: 1px;
-  color: #fff;
-  margin-bottom: 25px;
-}
-
-/* --- ESTILO DEL BOTÓN CON DESTELLOS INTEGRADOS --- */
+/* --- ESTILO DEL SPARKLE BUTTON (.btn-enter) --- */
 .btn-enter {
   position: relative;
   padding: 14px 40px;
