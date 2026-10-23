@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ASTRAL RAWS — Portafolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Fuentes oficiales Syne e Inter de la referencia -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Barra de navegación superior -->
+  <nav class="top-nav">
+    <div class="nav-brand">ASTRAL RAWS</div>
+    <div class="nav-links">
+      <a href="index.html" class="active">Inicio</a>
+      <a href="plantilla2.html">Plantilla 2</a>
+      <a href="plantilla3.html">Plantilla 3</a>
+    </div>
+  </nav>
+
+  <!-- Contenedor principal Parallax -->
+  <div class="parallax-container" id="parallax">
+    
+    <!-- Capa de fondo: Grid de 4 columnas verticales -->
+    <div class="layer layer-bg" data-depth="0.04">
+      <div class="photo-columns">
+        
+        <!-- Columna 1 -->
+        <div class="column">
+          <div class="grid-item"><img src="assets/gallery/gallery-1.webp" alt="Trabajo 1"></div>
+          <div class="grid-item"><img src="assets/gallery/gallery-2.webp" alt="Trabajo 2"></div>
+        </div>
+
+        <!-- Columna 2 -->
+        <div class="column col-offset">
+          <div class="grid-item"><img src="assets/gallery/gallery-3.webp" alt="Trabajo 3"></div>
+          <div class="grid-item"><img src="assets/gallery/gallery-4.webp" alt="Trabajo 4"></div>
+        </div>
+
+        <!-- Columna 3 -->
+        <div class="column">
+          <div class="grid-item"><img src="assets/gallery/gallery-5.webp" alt="Trabajo 5"></div>
+          <div class="grid-item"><img src="assets/gallery/gallery-1.webp" alt="Trabajo 6"></div>
+        </div>
+
+        <!-- Columna 4 -->
+        <div class="column col-offset">
+          <div class="grid-item"><img src="assets/gallery/gallery-2.webp" alt="Trabajo 7"></div>
+          <div class="grid-item"><img src="assets/gallery/gallery-3.webp" alt="Trabajo 8"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Capa Frontal: Título gigante limpio (sin tarjeta ni recuadros) -->
+    <div class="layer layer-fg" data-depth="0.12">
+      <div class="hero-title">
+        <p class="subtitle">PH GABO</p>
+        <h1>ASTRAL RAWS</h1>
+        <a href="#projects" class="btn-explore">VER TRABAJOS</a>
+      </div>
+    </div>
+
+    <!-- Texto descriptivo inferior estilo editorial -->
+    <div class="hero-description">
+      Audiovisual dedicado a varias areas con especializacion en cosplay.
+    </div>
+
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

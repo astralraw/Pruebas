@@ -1,0 +1,276 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+}
+
+/* --- BARRA DE NAVEGACIÓN --- */
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 70px;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+  z-index: 100;
+}
+
+.nav-brand {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #fff;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: #888;
+  text-decoration: none;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #fff;
+}
+
+/* --- ESCENA PARALLAX --- */
+.parallax-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+  transition: transform 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  pointer-events: none;
+}
+
+/* --- FONDO DE 4 COLUMNAS VERTICALES (RATIO 4:5 REAL) --- */
+.layer-bg {
+  width: 120%;
+  height: 120%;
+  top: -10%;
+  left: -10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo-columns {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 Columnas reales */
+  gap: 25px;                            /* Separación entre columnas */
+  width: 90%;
+  max-width: 1600px;
+  height: 100%;
+  align-items: center;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Desplazamiento alternado de columnas para estilo editorial */
+.col-offset {
+  transform: translateY(40px);
+}
+
+.grid-item {
+  width: 100%;
+  aspect-ratio: 4 / 5;                 /* Ratio vertical de fotografía 4:5 */
+  overflow: hidden;
+  border-radius: 4px;
+  background-color: #111;
+}
+
+.grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.35) contrast(1.1);
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.grid-item:hover img {
+  filter: brightness(0.75) contrast(1.1);
+  transform: scale(1.04);
+}
+
+/* --- CAPA FRONTAL: TÍTULO GIGANTE SIN CUADROS DETRÁS --- */
+.layer-fg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: auto;
+}
+
+.hero-title {
+  text-align: center;
+}
+
+.subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 6px;
+  color: #aaa;
+  margin-bottom: 15px;
+}
+
+.hero-title h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(3.5rem, 8vw, 7.5rem); /* Título gigante que cruza de lado a lado */
+  font-weight: 800;
+  letter-spacing: -2px;
+  line-height: 0.95;
+  color: #ffffff;
+  margin-bottom: 30px;
+  text-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
+}
+
+.btn-explore {
+  display: inline-block;
+  padding: 12px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  transition: all 0.3s ease;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+}
+
+.btn-explore:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* --- TEXTO INFERIOR IZQUIERDO --- */
+.hero-description {
+  position: absolute;
+  bottom: 35px;
+  left: 40px;
+  max-width: 360px;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: #cccccc;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  pointer-events: auto;
+  z-index: 50;
+}
+
+/* --- DISEÑO RESPONSIVE PARA TELÉFONOS (Móviles) --- */
+@media screen and (max-width: 768px) {
+  .photo-columns {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    width: 95%;
+  }
+
+  .col-offset {
+    transform: translateY(0);
+  }
+
+  .hero-title h1 {
+    font-size: 3rem;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+  }
+
+  .subtitle {
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+  }
+
+  /* Se mantiene absolute abajo sin centrarse por el flexbox */
+  .hero-description {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    max-width: 100%;
+    font-size: 0.85rem;
+    text-align: center;
+  }
+
+  .top-nav {
+    padding: 0 20px;
+  }
+
+  .nav-links {
+    gap: 15px;
+  }
+
+  .nav-links a {
+    font-size: 0.65rem;
+  }
+}
+
+/* --- ANIMACIÓN DE ENTRADA SUAVE (FADE-IN) --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Aplicamos la animación al contenedor de la rejilla de fotos y a la barra de navegación */
+.layer-bg {
+  animation: fadeIn 1.2s ease-out forwards;
+}
+
+.top-nav {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Opcional: Hacemos que el título central aparezca un instante después con un leve movimiento hacia arriba */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.layer-fg {
+  animation: fadeInUp 1s ease-out 0.3s forwards;
+  opacity: 0; /* Empieza oculto para hacer la transición */
+}
