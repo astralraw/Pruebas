@@ -13,32 +13,29 @@
 <body>
 
   <!-- Capa de bienvenida con Sparkle Button -->
-<div id="welcome-overlay">
-  <div class="welcome-content">
-    <p class="subtitle">ASTRAL RAWS</p>
-    <h2>TOCA PARA COMENZAR</h2>
-    
-    <!-- Botón Sparkle -->
-    <button class="sparkle-btn">
-      <span class="btn-text">ENTRAR</span>
-      <div class="sparkles">
-        <!-- Estrella 1 -->
-        <svg class="sparkle sparkle-1" viewBox="0 0 160 160" fill="none">
-          <path d="M80 0C80 44.1828 44.1828 80 0 80C44.1828 80 80 115.817 80 160C80 115.817 115.817 80 160 80C115.817 80 80 44.1828 80 0Z" fill="currentColor"/>
-        </svg>
-        <!-- Estrella 2 -->
-        <svg class="sparkle sparkle-2" viewBox="0 0 160 160" fill="none">
-          <path d="M80 0C80 44.1828 44.1828 80 0 80C44.1828 80 80 115.817 80 160C80 115.817 115.817 80 160 80C115.817 80 80 44.1828 80 0Z" fill="currentColor"/>
-        </svg>
-        <!-- Estrella 3 -->
-        <svg class="sparkle sparkle-3" viewBox="0 0 160 160" fill="none">
-          <path d="M80 0C80 44.1828 44.1828 80 0 80C44.1828 80 80 115.817 80 160C80 115.817 115.817 80 160 80C115.817 80 80 44.1828 80 0Z" fill="currentColor"/>
-        </svg>
-      </div>
-    </button>
+  <div id="welcome-overlay">
+    <div class="welcome-content">
+      <p class="subtitle">ASTRAL RAWS</p>
+      <h2>TOCA PARA COMENZAR</h2>
+      
+      <!-- Usamos la clase .btn-enter para que coincida perfectamente con el CSS -->
+      <button class="btn-enter">
+        <span>ENTRAR</span>
+        <div class="sparkles">
+          <svg class="sparkle sparkle-1" viewBox="0 0 160 160" fill="none">
+            <path d="M80 0C80 44.1828 44.1828 80 0 80C44.1828 80 80 115.817 80 160C80 115.817 115.817 80 160 80C115.817 80 80 44.1828 80 0Z" fill="currentColor"/>
+          </svg>
+          <svg class="sparkle sparkle-2" viewBox="0 0 160 160" fill="none">
+            <path d="M80 0C80 44.1828 44.1828 80 0 80C44.1828 80 80 115.817 80 160C80 115.817 115.817 80 160 80C115.817 80 80 44.1828 80 0Z" fill="currentColor"/>
+          </svg>
+          <svg class="sparkle sparkle-3" viewBox="0 0 160 160" fill="none">
+            <path d="M80 0C80 44.1828 44.1828 80 0 80C44.1828 80 80 115.817 80 160C80 115.817 115.817 80 160 80C115.817 80 80 44.1828 80 0Z" fill="currentColor"/>
+          </svg>
+        </div>
+      </button>
 
+    </div>
   </div>
-</div>
 
   <!-- Barra de navegación superior -->
   <nav class="top-nav">
@@ -84,7 +81,7 @@
       </div>
     </div>
 
-    <!-- Capa Frontal: Título gigante limpio (sin tarjeta ni recuadros) -->
+    <!-- Capa Frontal: Título gigante limpio -->
     <div class="layer layer-fg" data-depth="0.12">
       <div class="hero-title">
         <p class="subtitle">PH GABO</p>
