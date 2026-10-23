@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Movimiento de mouse (PC)
+  // 1. Movimiento con mouse (PC)
   document.addEventListener('mousemove', (e) => {
     const centerX = window.innerWidth / 2;
     const centerY = window.innerHeight / 2;
@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     moveLayers(deltaX, deltaY);
   });
 
+  // 2. Movimiento con giroscopio (Móvil)
   function handleOrientation(e) {
     if (e.gamma === null || e.beta === null) return;
     const deltaX = Math.max(-1.5, Math.min(1.5, e.gamma / 12));
@@ -27,10 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
     moveLayers(deltaX, deltaY);
   }
 
-  // Al hacer el primer toque en la pantalla, damos permiso y quitamos la cortina de bienvenida
+  // 3. Activación al hacer clic/toque en la pantalla de bienvenida
   if (overlay) {
     overlay.addEventListener('click', () => {
-      // Solicitar permiso en iOS si aplica
+      // Solicitar permisos de giroscopio en iOS si aplica
       if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
         DeviceOrientationEvent.requestPermission()
           .then(response => {
@@ -40,15 +41,12 @@ document.addEventListener('DOMContentLoaded', () => {
           })
           .catch(console.error);
       } else if (window.DeviceOrientationEvent) {
-        // Android / otros
+        // Android / otros navegadores
         window.addEventListener('deviceorientation', handleOrientation, true);
       }
 
-      // Desvanecer y ocultar la capa de bienvenida
-      overlay.style.opacity = '0';
-      setTimeout(() => {
-        overlay.style.display = 'none';
-      }, 500);
+      // Ocultar la pantalla de bienvenida agregando la clase .hidden
+      overlay.classList.add('hidden');
     });
   }
 });
