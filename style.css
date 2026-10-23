@@ -395,11 +395,131 @@ body {
   }
   50% { 
     transform: scale(1.2) rotate(20deg); 
+
+/* --- CAPA DE BIENVENIDA (SPLASH SCREEN) --- */
+#welcome-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+  opacity: 1;
+  visibility: visible;
+}
+
+#welcome-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.welcome-content {
+  padding: 20px;
+}
+
+.welcome-content .subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 5px;
+  color: #888;
+  margin-bottom: 12px;
+}
+
+.welcome-content h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #fff;
+  margin-bottom: 25px;
+}
+
+/* --- ESTILO DEL BOTÓN CON DESTELLOS INTEGRADOS --- */
+.btn-enter {
+  position: relative;
+  padding: 14px 40px;
+  background: #0a0a0a;
+  border: 2px solid #38bdf8;
+  border-radius: 10px;
+  color: #ffffff;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.3),
+              inset 0 0 10px rgba(56, 189, 248, 0.15);
+}
+
+.btn-enter span {
+  position: relative;
+  z-index: 2;
+}
+
+/* Contenedor de estrellas visible siempre */
+.sparkles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  filter: drop-shadow(0 0 6px rgba(255, 253, 239, 0.6));
+}
+
+/* Estilos base de las estrellas SVG */
+.sparkle {
+  position: absolute;
+  color: #fffdef;
+  opacity: 0.9;
+  animation: sparklePulse 2.5s infinite ease-in-out;
+}
+
+/* Posiciones y tamaños fijos de las estrellas alrededor del botón */
+.sparkle-1 {
+  width: 20px;
+  height: 20px;
+  top: -12px;
+  left: -10px;
+  animation-delay: 0s;
+}
+
+.sparkle-2 {
+  width: 14px;
+  height: 14px;
+  bottom: -8px;
+  right: 15%;
+  animation-delay: 0.8s;
+}
+
+.sparkle-3 {
+  width: 22px;
+  height: 22px;
+  top: 50%;
+  right: -14px;
+  transform: translateY(-50%);
+  animation-delay: 1.5s;
+}
+
+/* Animación constante de parpadeo y rotación */
+@keyframes sparklePulse {
+  0%, 100% { 
+    transform: scale(0.8) rotate(0deg); 
+    opacity: 0.4; 
+  }
+  50% { 
+    transform: scale(1.2) rotate(20deg); 
     opacity: 1; 
   }
 }
 
-/* Efecto al presionar o pasar el mouse */
+/* Efecto al presionar o interactuar con el botón */
 .btn-enter:hover,
 .btn-enter:active {
   background: #0f172a;
@@ -407,9 +527,4 @@ body {
   box-shadow: 0 0 30px rgba(56, 189, 248, 0.7),
               inset 0 0 15px rgba(56, 189, 248, 0.4);
   transform: scale(1.02);
-}
-
-.welcome-content:hover .btn-enter {
-  background: #fff;
-  color: #000;
 }
